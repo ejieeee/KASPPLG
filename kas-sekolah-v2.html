@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buku Kas Sekolah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F3EDE0;--ivory:#FAF7EF;--sage:#929C7D;--moss:#66745A;--olive:#A5A080;--blue:#A6B5B6;--terra:#B77F6B;--brown:#77644F;--ink:#393A32;--line:rgba(119,100,79,.35);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#2a2820;--ivory:#343126;--ink:#EDE6D6;--brown:#C9B79C;--moss:#A9B796;--line:rgba(201,183,156,.3)}}
+:root[data-theme="dark"]{--paper:#2a2820;--ivory:#343126;--ink:#EDE6D6;--brown:#C9B79C;--moss:#A9B796;--line:rgba(201,183,156,.3)}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font:400 16px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.32;mix-blend-mode:multiply;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;margin:0;line-height:1.05;letter-spacing:-.01em}
+.ed{font-family:"Libre Baskerville",Georgia,serif;font-style:italic;font-size:.95rem;color:var(--brown);margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem) 5rem;position:relative}
+svg.defs{position:absolute;width:0;height:0}
+.paint{filter:url(#wc);pointer-events:none}
+.wash{position:absolute;z-index:-1;pointer-events:none;mix-blend-mode:multiply;filter:url(#wash)}
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 0 1rem;border-bottom:1px solid var(--line);margin-bottom:2.5rem;position:relative}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-5px;border-bottom:1px solid var(--line);opacity:.5}
+.brand{font:600 1.45rem "Cormorant Garamond",serif;display:flex;align-items:center;gap:.5rem}
+nav{display:flex;gap:1.6rem}
+nav button{all:unset;cursor:pointer;font-size:.9rem;color:var(--brown);padding:.3rem 0;position:relative}
+nav button[aria-current=true]{color:var(--ink)}
+nav button[aria-current=true]::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-2px;height:5px;background:var(--sage);opacity:.55;border-radius:50% 40% 60% 45%;filter:url(#wc)}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--moss);outline-offset:3px}
+.view{display:none}.view.on{display:block;animation:fade .5s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.seal{all:unset;cursor:pointer;position:relative;isolation:isolate;color:#FAF7EF;font-weight:500;letter-spacing:.04em;padding:1rem 2.4rem;display:inline-block;text-align:center}
+.seal::before{content:"";position:absolute;inset:-4px -6px;z-index:-1;background:var(--terra);border-radius:56% 44% 52% 48%/55% 48% 52% 45%;filter:url(#wc);transition:transform .35s,border-radius .35s}
+.seal:hover::before{transform:rotate(-2deg) scale(1.04);border-radius:46% 54% 44% 56%/50% 58% 42% 50%}
+.seal.moss::before{background:var(--moss)}
+.seal[disabled]{opacity:.5;cursor:not-allowed}
+.link{all:unset;cursor:pointer;color:var(--moss);border-bottom:1px dotted var(--moss);padding-bottom:1px}
+.link:hover{color:var(--terra);border-color:var(--terra)}
+.link[disabled]{opacity:.55;cursor:default}
+.hello{position:relative;padding:1rem 0 2rem}
+.hello h1{font-size:clamp(2.6rem,6vw,4.4rem);margin:.4rem 0 1rem}
+.hello .act{display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem;align-items:center;margin-top:1.6rem}
+.cols{display:grid;grid-template-columns:1.25fr 1fr;gap:3.5rem;border-top:1px solid var(--line);padding-top:2rem}
+.sec+.sec{margin-top:2.5rem}
+.sec h2{font-size:1.9rem;margin-bottom:.4rem}
+.row{display:flex;align-items:baseline;gap:.8rem;padding:.7rem .4rem;border-bottom:1px dotted var(--line);transition:background .25s;flex-wrap:wrap}
+.row:hover{background:rgba(146,156,125,.14)}
+.row .dots{flex:1}
+.row .m{font-weight:500}
+.row .d{color:var(--brown);font-size:.85rem}
+.tag{font-size:.85rem}.tag.no{color:var(--terra)}.tag.ok{color:var(--moss)}
+.who{all:unset;cursor:pointer;font-weight:500;border-bottom:1px solid transparent}
+.who:hover{border-color:var(--sage)}
+.hist{width:100%;padding:.3rem 0 .4rem 1rem;font-size:.85rem;color:var(--brown);border-left:2px solid var(--sage);margin:.3rem 0 .2rem .3rem}
+.hist div{display:flex;justify-content:space-between;gap:1rem}
+.amount{font:400 clamp(3.4rem,9vw,6.2rem)/1 "Cormorant Garamond",serif}
+.amount small{font-size:.38em;color:var(--brown);margin-right:.3em}
+.pill{font-size:.85rem;color:var(--brown);margin:.3rem 0 0}
+.quick{display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem;font-family:"Cormorant Garamond",serif;font-size:1.4rem}
+.quick .link{width:max-content;border:0}.quick .link::before{content:"❧ ";color:var(--terra)}
+label{display:block;font-size:.85rem;color:var(--brown);margin-top:1rem}
+select,input{all:unset;box-sizing:border-box;width:100%;border-bottom:1px solid var(--brown);padding:.55rem 0;font-size:1rem;background:transparent;cursor:pointer}
+select{background:transparent;color:var(--ink)}
+select option{color:#393A32;background:#FAF7EF}
+input{cursor:text}
+.pay{display:grid;grid-template-columns:1fr minmax(300px,420px);gap:3rem;align-items:start}
+.panel{position:relative;background:var(--ivory);border:1px solid var(--brown);padding:2rem;text-align:center;margin:2.5rem 2rem;outline:1px solid var(--line);outline-offset:6px;min-height:340px;color:#393A32}
+.panel .qr{background:#fff;padding:14px;display:inline-block;border:1px solid #ddd}
+.qr svg{display:block;width:min(100%,250px);height:auto}
+.corner{position:absolute;pointer-events:none}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;min-height:280px}
+.stat{margin-top:.9rem;font-size:.9rem;color:var(--brown)}
+.sim{margin-top:2rem;border-top:1px dotted var(--line);padding-top:1rem;font-size:.85rem}
+.sim summary{cursor:pointer;color:var(--brown)}
+.sim .bt{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:.8rem 0}
+.log{margin:.5rem 0 0;padding-left:1.1rem;color:var(--brown)}.log .bad{color:var(--terra)}.log .good{color:var(--moss)}
+.done{text-align:center;padding:2rem 0;position:relative}
+.done h1{font-size:clamp(2.8rem,7vw,5rem)}
+.receipt{max-width:400px;margin:2rem auto;text-align:left}
+.lock{max-width:340px;margin:3rem auto;text-align:center}
+.lock h1{font-size:2.8rem;margin:.4rem 0 1rem}
+@media (max-width:760px){
+ .cols,.pay{grid-template-columns:1fr;gap:1.8rem}
+ header{margin-bottom:1.5rem}
+ nav{position:fixed;left:0;right:0;bottom:0;z-index:60;justify-content:space-around;gap:0;background:var(--ivory);border-top:1px solid var(--brown);padding:.7rem .5rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+ .panel{margin:1.5rem .5rem}.wrap{padding-bottom:6rem}
+}
+@media print{nav,.seal,.link,body::before{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg class="defs" aria-hidden="true"><defs>
+<filter id="wc" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/><feGaussianBlur stdDeviation=".5"/></filter>
+<filter id="wash" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="4" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="40"/><feGaussianBlur stdDeviation="4"/></filter>
+<path id="leaf" d="M0 0C10-15 30-16 44 0C30 16 10 15 0 0Z"/>
+<symbol id="sprig" viewBox="0 0 160 320" overflow="visible"><path d="M80 315C68 240 98 150 76 18" fill="none" stroke="#66745A" stroke-width="2.6" stroke-linecap="round"/>
+<use href="#leaf" fill="#929C7D" opacity=".85" transform="translate(74 270) rotate(-38) scale(1.3)"/><use href="#leaf" fill="#66745A" opacity=".8" transform="translate(80 235) rotate(28) scale(1.2)"/><use href="#leaf" fill="#A5A080" opacity=".9" transform="translate(78 190) rotate(-30) scale(1.1)"/><use href="#leaf" fill="#929C7D" opacity=".85" transform="translate(84 150) rotate(32)"/><use href="#leaf" fill="#66745A" opacity=".75" transform="translate(80 108) rotate(-36) scale(.9)"/><use href="#leaf" fill="#A6B5B6" opacity=".9" transform="translate(78 70) rotate(30) scale(.8)"/><use href="#leaf" fill="#929C7D" opacity=".85" transform="translate(77 20) rotate(-80) scale(.7)"/></symbol>
+<symbol id="flower" viewBox="-50 -50 100 100" overflow="visible"><g fill="#B77F6B" opacity=".72"><ellipse cx="0" cy="-20" rx="12" ry="22"/><ellipse cx="0" cy="-20" rx="12" ry="22" transform="rotate(72)"/><ellipse cx="0" cy="-20" rx="12" ry="22" transform="rotate(144)"/><ellipse cx="0" cy="-20" rx="12" ry="22" transform="rotate(216)"/><ellipse cx="0" cy="-20" rx="12" ry="22" transform="rotate(288)"/></g><circle r="7" fill="#77644F" opacity=".85"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+<header>
+ <div class="brand"><svg width="26" height="26" viewBox="0 0 100 100" class="paint" aria-hidden="true"><use href="#flower" width="100" height="100"/></svg>Buku Kas Kelas VIII</div>
+ <nav aria-label="Halaman"><button data-go="kas" aria-current="true">Kas</button><button data-go="bayar">Bayar</button><button data-go="admin">Bendahara</button></nav>
+</header>
+
+<!-- KAS -->
+<section class="view on" id="kas">
+ <div class="hello">
+  <div class="wash" style="left:-4%;top:-10%;width:46%;height:90%;background:var(--sage);opacity:.3;border-radius:50%"></div>
+  <p class="ed" id="kasDate"></p>
+  <h1 id="kasTitle"></h1>
+  <p id="kasSum" class="pill" style="font-size:1rem"></p>
+  <div class="act"><button class="seal" data-go="bayar">Bayar Sekarang</button><span class="pill">Uang kas <b id="kasAmt"></b> per siswa tiap bulan</span></div>
+  <svg viewBox="0 0 120 240" width="90" class="paint" style="position:absolute;right:2%;top:-8px" aria-hidden="true"><use href="#sprig" width="120" height="240"/></svg>
+ </div>
+ <div class="cols">
+  <div class="sec"><h2>Belum membayar</h2><p class="ed" id="unpaidHint" style="margin-bottom:.6rem"></p><div id="unpaidList"></div></div>
+  <div class="sec"><h2>Sudah membayar</h2><div id="paidList"></div></div>
+ </div>
+</section>
+
+<!-- BAYAR -->
+<section class="view" id="bayar">
+ <div class="pay">
+  <div>
+   <p class="ed">Pembayaran uang kas</p>
+   <h1 style="font-size:clamp(2.6rem,6vw,4rem);margin:.3rem 0 1rem">Pilih nama, lalu bayar.</h1>
+   <div class="amount" style="font-size:3.4rem"><small>Rp</small>25.000</div>
+   <p class="pill" id="payMonth"></p>
+   <label for="who">Nama siswa</label>
+   <select id="who"></select>
+   <p style="margin-top:1.8rem"><button class="seal" id="mk" disabled>Buat kode QRIS</button></p>
+   <p class="pill" style="margin-top:1.2rem;max-width:36ch">Pembayaran dicatat otomatis setelah gateway mengonfirmasi. Tidak ada tombol “sudah bayar”.</p>
+   <details class="sim" id="sim" hidden><summary>Simulator gateway (hanya pratinjau)</summary>
+    <div class="bt"><button class="link" data-sim="ok">Pembayaran berhasil</button><button class="link" data-sim="dup">Kirim ulang notifikasi</button><button class="link" data-sim="amt">Nominal salah</button><button class="link" data-sim="sig">Tanda tangan palsu</button></div>
+    <ol class="log" id="log" aria-live="polite"></ol></details>
+  </div>
+  <div class="panel" id="panel"></div>
+ </div>
+</section>
+
+<!-- SUKSES -->
+<section class="view" id="sukses"><div class="done" id="doneBox"></div></section>
+
+<!-- BENDAHARA -->
+<section class="view" id="admin">
+ <div id="lock" class="lock"><p class="ed">Halaman khusus bendahara</p><h1>Masukkan PIN.</h1><label for="pin">PIN bendahara</label><input id="pin" type="password" inputmode="numeric" maxlength="8" autocomplete="off"><p class="pill" id="pinMsg">PIN contoh untuk pratinjau: 2026</p><p style="margin-top:1.6rem"><button class="seal moss" id="unlock">Buka</button></p></div>
+ <div id="adm" hidden>
+  <div class="hello"><div class="wash" style="right:0;top:-20%;width:44%;height:130%;background:var(--blue);opacity:.35;border-radius:50%"></div>
+   <p class="ed">Total kas terkumpul</p><div class="amount"><small>Rp</small><span id="count">0</span></div><p class="pill" id="admSum"></p></div>
+  <div class="cols">
+   <div><div class="sec"><h2>Transaksi terbaru</h2><div id="recent"></div></div>
+    <div class="sec"><h2>Belum membayar</h2><div id="admUnpaid"></div></div></div>
+   <div class="sec"><h2>Tindakan cepat</h2>
+    <label for="cashWho">Catat pembayaran tunai</label><select id="cashWho"></select>
+    <p style="margin-top:1rem"><button class="link" id="cash">Catat tunai</button></p><p class="pill" id="cashMsg" aria-live="polite"></p>
+    <div class="quick" style="margin-top:1.6rem"><button class="link" id="print">Cetak laporan</button><button class="link" id="reset">Setel ulang data contoh</button></div>
+   </div></div>
+ </div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const KAS=25000,MONTH="2026-11",PIN="2026",SECRET="demo-only-secret",TTL=15*60e3;
+const MN={"2026-09":"September","2026-10":"Oktober","2026-11":"November"};
+const rp=n=>"Rp "+n.toLocaleString("id-ID");
+const fd=s=>new Date(s).toLocaleDateString("id-ID",{day:"numeric",month:"short"});
+const NAMES=["Angga","Anindya","Bima","Citra","Dimas","Eka","Fajar","Gita","Hendra","Indah","Joko","Kirana"];
+const ST=NAMES.map((n,i)=>({id:"s"+i,name:n}));
+const nm=id=>ST.find(s=>s.id===id).name;
+function seed(){const p=[];let k=1;
+ ST.forEach((s,i)=>{["2026-09","2026-10"].forEach((m,j)=>p.push({id:"P"+k++,order:"KAS-"+m+"-"+s.id,sid:s.id,amount:KAS,month:m,method:(i+j)%3?"QRIS":"Tunai",at:m+"-0"+(2+(i%7))+"T08:00:00"}));
+  if([1,2,3,4,8,9].includes(i))p.push({id:"P"+k++,order:"KAS-"+MONTH+"-"+s.id,sid:s.id,amount:KAS,month:MONTH,method:i%2?"QRIS":"Tunai",at:MONTH+"-0"+(2+(i%7))+"T08:00:00"})});
+ return{payments:p,orders:[]}}
+let DB;try{DB=JSON.parse(localStorage.getItem("kas2"))}catch(e){}if(!DB||!DB.payments)DB=seed();
+const save=()=>{try{localStorage.setItem("kas2",JSON.stringify(DB))}catch(e){}};
+const isPaid=(sid,m=MONTH)=>DB.payments.some(p=>p.sid===sid&&p.month===m);
+const total=sid=>DB.payments.filter(p=>p.sid===sid).reduce((a,p)=>a+p.amount,0);
+const unpaid=()=>ST.filter(s=>!isPaid(s.id));
+
+/* ---- aturan "server": semua validasi di sini, bukan di tombol ---- */
+function sign(o,a,st){let h=5381;for(const c of o+"|"+a+"|"+st+"|"+SECRET)h=((h<<5)+h+c.charCodeAt(0))|0;return(h>>>0).toString(16)}
+function makeOrder(sid){
+ if(isPaid(sid))return{err:"Siswa ini sudah lunas bulan ini."};
+ let o=DB.orders.find(x=>x.sid===sid&&x.month===MONTH&&x.status==="pending"&&x.exp>Date.now());
+ if(!o){o={id:"KAS-"+MONTH+"-"+sid+"-"+Math.random().toString(36).slice(2,8).toUpperCase(),sid,month:MONTH,amount:KAS,exp:Date.now()+TTL,status:"pending"};DB.orders.push(o);save()}
+ return{o}}
+function settle(n){
+ const o=DB.orders.find(x=>x.id===n.order);
+ if(!o)return"Ditolak: order tidak dikenal";
+ if(n.sig!==sign(n.order,n.amount,n.status))return"Ditolak: tanda tangan tidak valid";
+ if(n.status!=="settlement")return"Ditolak: status bukan settlement";
+ if(o.status==="paid")return"Diabaikan: notifikasi duplikat, tidak dicatat dua kali";
+ if(o.status!=="pending"||Date.now()>o.exp){o.status="expired";save();return"Ditolak: kode sudah kedaluwarsa"}
+ if(n.amount!==o.amount)return"Ditolak: nominal tidak sama dengan tagihan";
+ if(isPaid(o.sid,o.month))return"Ditolak: bulan ini sudah lunas";
+ o.status="paid";DB.payments.push({id:"P"+Date.now(),order:o.id,sid:o.sid,amount:o.amount,month:o.month,method:"QRIS",at:new Date().toISOString()});save();
+ return"OK"}
+
+/* ---- tampilan ---- */
+let cur="kas",openId=null,pre="",order=null,tick,adminOn=false,fails=0,lockUntil=0;
+function go(v){cur=v;$$(".view").forEach(e=>e.classList.toggle("on",e.id===v));
+ $$("nav button").forEach(b=>b.setAttribute("aria-current",b.dataset.go===v));scrollTo(0,0);render()}
+function render(){
+ if(cur==="kas")rKas();if(cur==="bayar")rPay();if(cur==="admin")rAdmin()}
+function rKas(){
+ const u=unpaid(),p=ST.length-u.length;
+ $("#kasDate").textContent="Kas bulan "+MN[MONTH]+" 2026";
+ $("#kasTitle").textContent=u.length?u.length+" siswa belum membayar.":"Semua sudah membayar.";
+ $("#kasSum").textContent=p+" dari "+ST.length+" siswa sudah membayar bulan ini.";
+ $("#kasAmt").textContent=rp(KAS);
+ $("#unpaidHint").textContent=u.length?"Ketuk nama untuk melihat riwayat.":"Terima kasih, kelas ini lunas.";
+ const row=(s,ok)=>`<div class="row"><button class="who" data-open="${s.id}" aria-expanded="${openId===s.id}">${s.name}</button><span class="dots"></span><span class="d">${rp(total(s.id))}</span>${ok?'<span class="tag ok">Lunas</span>':`<button class="link" data-pay="${s.id}">Bayar</button>`}${openId===s.id?hist(s.id):""}</div>`;
+ $("#unpaidList").innerHTML=u.map(s=>row(s,0)).join("");
+ $("#paidList").innerHTML=ST.filter(s=>isPaid(s.id)).map(s=>row(s,1)).join("")}
+function hist(id){const h=DB.payments.filter(p=>p.sid===id).sort((a,b)=>b.at.localeCompare(a.at));
+ return`<div class="hist">${h.map(p=>`<div><span>${MN[p.month]||p.month} · ${p.method} · ${fd(p.at)}</span><span>${rp(p.amount)}</span></div>`).join("")||"Belum ada pembayaran."}<div style="margin-top:.3rem;color:var(--ink)"><span>Total kas</span><span>${rp(total(id))}</span></div></div>`}
+function rPay(){
+ const u=unpaid(),sel=$("#who");
+ $("#payMonth").textContent="Kas bulan "+MN[MONTH]+" 2026";
+ sel.innerHTML='<option value="">'+(u.length?"Pilih nama":"Semua sudah lunas")+"</option>"+u.map(s=>`<option value="${s.id}">${s.name}</option>`).join("");
+ if(pre&&u.some(s=>s.id===pre)){sel.value=pre;order=null}pre="";
+ $("#mk").disabled=!sel.value;drawPanel()}
+function qrSvg(seedStr){let h=7;for(const c of seedStr)h=(h*31+c.charCodeAt(0))>>>0;const r=()=>(h=(h*1103515245+12345)&0x7fffffff)/0x7fffffff,N=29;
+ const fin=(x,y)=>[[0,0],[N-7,0],[0,N-7]].some(([a,b])=>x>=a-1&&x<=a+7&&y>=b-1&&y<=b+7);let d="",f="";
+ for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(!fin(x,y)&&r()>.52)d+=`M${x} ${y}h1v1h-1z`;
+ [[0,0],[N-7,0],[0,N-7]].forEach(([a,b])=>f+=`<rect x="${a+.5}" y="${b+.5}" width="6" height="6" fill="none" stroke="#000"/><rect x="${a+2}" y="${b+2}" width="3" height="3" fill="#000"/>`);
+ return`<svg viewBox="0 0 ${N} ${N}" shape-rendering="crispEdges"><path d="${d}" fill="#000"/>${f}</svg>`}
+function drawPanel(){
+ clearInterval(tick);const P=$("#panel"),corners=`<svg class="corner paint" style="left:-46px;top:-46px" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true"><use href="#sprig" x="10" width="60" height="100" transform="rotate(-60 40 50)"/><use href="#flower" width="40" height="40"/></svg><svg class="corner paint" style="right:-46px;bottom:-46px" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true"><use href="#sprig" x="30" width="60" height="100" transform="rotate(120 60 50)"/><use href="#flower" x="62" y="62" width="36" height="36"/></svg>`;
+ $("#sim").hidden=!order;
+ if(!order){P.innerHTML=corners+`<div class="empty"><svg viewBox="0 0 120 120" width="110" class="paint" aria-hidden="true"><use href="#flower" x="30" y="10" width="60" height="60"/><use href="#sprig" x="40" y="55" width="40" height="64"/></svg><p class="ed">Pilih nama untuk menampilkan kode QRIS.</p></div>`;return}
+ P.innerHTML=corners+`<h3 style="font-size:1.6rem">QRIS</h3><p class="ed" style="margin:.2rem 0 1rem">Kas ${MN[MONTH]} · ${nm(order.sid)}</p><div class="qr" id="qrBox">${qrSvg(order.id)}</div><p class="stat" id="stat"></p><p class="pill" style="margin:.3rem 0 0">${rp(order.amount)} · ${order.id}</p><p class="pill">Kode contoh untuk pratinjau</p>`;
+ const f=()=>{const left=order.exp-Date.now(),st=$("#stat");if(!st)return;
+  if(order.status==="paid"){clearInterval(tick);return}
+  if(left<=0){order.status="expired";save();clearInterval(tick);$("#qrBox").style.opacity=.25;st.innerHTML='Kode kedaluwarsa. <button class="link" id="again">Buat kode baru</button>';return}
+  st.textContent="Menunggu konfirmasi gateway · "+String(Math.floor(left/6e4)).padStart(2,"0")+":"+String(Math.floor(left/1e3)%60).padStart(2,"0")};
+ f();tick=setInterval(f,1000)}
+function logIt(m){const li=document.createElement("li");li.textContent=m;li.className=m==="Berhasil: pembayaran tercatat"?"good":"bad";$("#log").prepend(li)}
+function sim(k){if(!order)return;
+ let n={order:order.id,amount:order.amount,status:"settlement"};n.sig=sign(n.order,n.amount,n.status);
+ if(k==="amt"){n.amount=1000;n.sig=sign(n.order,n.amount,n.status)}
+ if(k==="sig")n.sig="deadbeef";
+ const r=settle(n);logIt(r==="OK"?"Berhasil: pembayaran tercatat":r);
+ if(r==="OK")finish(order)}
+function finish(o){
+ $("#doneBox").innerHTML=`<div class="wash" style="left:25%;top:0;width:50%;height:80%;background:var(--sage);opacity:.35;border-radius:50%"></div><svg viewBox="0 0 200 140" width="190" class="paint" aria-hidden="true"><use href="#flower" x="60" y="10" width="80" height="80"/><use href="#sprig" x="10" width="60" height="120" transform="rotate(-30 40 60)"/><use href="#sprig" x="130" width="60" height="120" transform="rotate(30 160 60)"/></svg><h1>Terima kasih, ${nm(o.sid)}.</h1><p class="ed">Kas ${MN[o.month]} sudah tercatat di riwayatmu.</p><div class="receipt"><div class="row"><span>Dibayar</span><span class="dots"></span><span class="m">${rp(o.amount)}</span></div><div class="row"><span>Total kas ${nm(o.sid)}</span><span class="dots"></span><span class="m">${rp(total(o.sid))}</span></div><div class="row"><span>Nomor order</span><span class="dots"></span><span class="d">${o.id}</span></div></div><button class="seal moss" data-go="kas">Lihat daftar kas</button>`;
+ order=null;go("sukses")}
+function rAdmin(){
+ $("#lock").hidden=adminOn;$("#adm").hidden=!adminOn;if(!adminOn)return;
+ const all=DB.payments.reduce((a,p)=>a+p.amount,0),el=$("#count"),t0=performance.now();
+ (function f(t){const p=Math.min((t-t0)/800,1);el.textContent=Math.round(all*(1-Math.pow(1-p,3))).toLocaleString("id-ID");if(p<1)requestAnimationFrame(f)})(t0);
+ const u=unpaid();$("#admSum").textContent=(ST.length-u.length)+" dari "+ST.length+" siswa sudah membayar bulan "+MN[MONTH]+".";
+ $("#recent").innerHTML=[...DB.payments].sort((a,b)=>b.at.localeCompare(a.at)).slice(0,5).map(p=>`<div class="row"><span class="m">${nm(p.sid)}</span><span class="dots"></span><span class="d">${p.method} · ${fd(p.at)}</span><span class="m">${(p.amount).toLocaleString("id-ID")}</span></div>`).join("");
+ $("#admUnpaid").innerHTML=u.map(s=>`<div class="row"><span class="m">${s.name}</span><span class="dots"></span><button class="link" data-rem>Ingatkan</button></div>`).join("")||'<p class="ed">Semua sudah lunas.</p>';
+ $("#cashWho").innerHTML=u.map(s=>`<option value="${s.id}">${s.name}</option>`).join("")||"<option value=''>Semua lunas</option>"}
+
+document.addEventListener("click",e=>{const t=e.target;let b;
+ if(b=t.closest("[data-go]"))return go(b.dataset.go);
+ if(b=t.closest("[data-open]")){openId=openId===b.dataset.open?null:b.dataset.open;return rKas()}
+ if(b=t.closest("[data-pay]")){pre=b.dataset.pay;order=null;return go("bayar")}
+ if(b=t.closest("[data-rem]")){b.textContent="Terkirim ✓";b.disabled=true;return}
+ if(b=t.closest("[data-sim]"))return sim(b.dataset.sim);
+ if(t.id==="again"){order=makeOrder($("#who").value).o;return drawPanel()}});
+$("#who").onchange=e=>{order=null;$("#mk").disabled=!e.target.value;drawPanel()};
+$("#mk").onclick=()=>{const r=makeOrder($("#who").value);if(r.err){$("#payMonth").textContent=r.err;return rPay()}order=r.o;$("#log").innerHTML="";drawPanel()};
+$("#unlock").onclick=()=>{
+ if(Date.now()<lockUntil){$("#pinMsg").textContent="Terlalu banyak percobaan. Coba lagi sebentar.";return}
+ if($("#pin").value===PIN){adminOn=true;fails=0;$("#pin").value="";return rAdmin()}
+ if(++fails>=3){lockUntil=Date.now()+3e4;fails=0}
+ $("#pinMsg").textContent="PIN salah.";$("#pin").value=""};
+$("#pin").onkeydown=e=>{if(e.key==="Enter")$("#unlock").click()};
+$("#cash").onclick=()=>{const sid=$("#cashWho").value;if(!sid)return;
+ if(isPaid(sid)){$("#cashMsg").textContent="Sudah lunas, tidak dicatat ulang.";return}
+ DB.payments.push({id:"P"+Date.now(),order:"TNI-"+MONTH+"-"+sid,sid,amount:KAS,month:MONTH,method:"Tunai",at:new Date().toISOString()});save();
+ $("#cashMsg").textContent="Tercatat: "+nm(sid)+" · tunai";rAdmin()};
+$("#print").onclick=()=>print();
+$("#reset").onclick=()=>{DB=seed();save();order=null;$("#cashMsg").textContent="Data contoh dikembalikan.";rAdmin()};
+render();
+</script>
+</body>
+</html>
